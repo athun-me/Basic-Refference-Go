@@ -1,0 +1,25 @@
+- main.go
+- go.mod
+- go.sum
+- api/
+    - handlers/
+        - user_handler.go
+    - models/
+        - user.go
+        - post.go
+    - routes/
+        - user_routes.go
+        - post_routes.go
+    - middleware/
+        - authentication.go
+        - logging.go
+    - utils/
+        - response.go
+        - error.go
+    - config/
+        - config.go
+    - database/
+        - db.go
+- tests/
+    - user_handler_test.go
+    - post_handler_test.go
