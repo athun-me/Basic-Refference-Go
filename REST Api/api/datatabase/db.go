@@ -8,11 +8,9 @@ import (
 	"gorm.io/gorm"
 )
 
-type Handler struct {
-	DB *gorm.DB
-}
+var DB *gorm.DB
 
-func InitDB(url string) *gorm.DB {
+func InitDB(url string) {
 	db, err := gorm.Open(postgres.Open(url), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("failed to connect to the database: %s", err)
@@ -24,5 +22,5 @@ func InitDB(url string) *gorm.DB {
 		log.Fatalf("failed to perform auto-migration: %s", err)
 	}
 
-	return db
+	DB = db
 }

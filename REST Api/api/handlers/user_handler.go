@@ -1,17 +1,24 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+	"log"
 
-type UserData struct {
-	Id       int64  `json:"id" gorm:"primaryKey"`
-	Email    string `json:"email"`
-	Password string `json:"password"`
-}
+	database "github.com/athunlal/api/datatabase"
+	"github.com/athunlal/api/models"
+	"github.com/gofiber/fiber/v2"
+)
 
-func Register(c *gin.Context) {
-	var Data UserData
-
-	if c.Bind(&Data) != nil {
-		c.JSON()
+func Register(c *fiber.Ctx) error {
+	Data := new(models.User)
+	if err := c.BodyParser(Data); err != nil {
+		fmt.Println("Body parsing error")
+		return err
 	}
+
+	result := database.DB.Create(&Data)
+	if result.Error != nil {
+		log.Fatal(result.Error)
+	}
+	return nil
 }
