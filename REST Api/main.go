@@ -5,7 +5,7 @@ import (
 
 	"github.com/athunlal/api/config"
 	db "github.com/athunlal/api/datatabase"
-	handler "github.com/athunlal/api/handlers"
+	"github.com/athunlal/api/routes"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -17,6 +17,6 @@ func main() {
 
 	db.InitDB(c.DBUrl)
 	app := fiber.New()
-	app.Post("register", handler.Register)
+	routes.Register(app)
 	app.Listen(":3000")
 }
