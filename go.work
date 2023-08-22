@@ -1,0 +1,11 @@
+go 1.18
+
+use (
+	"./REST Api"
+	./DataBase
+	./DataFromPostman
+	./MongoDb-GO
+	./Servers
+	./SingleAPI
+	./jwt
+)
