@@ -1,9 +1,10 @@
-go 1.18
+go 1.21.0
 
 use (
 	"./REST Api"
 	./DataBase
 	./DataFromPostman
+	./HTTPpackage
 	./MongoDb-GO
 	./Servers
 	./SingleAPI
